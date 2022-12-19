@@ -22,7 +22,7 @@ class Multileveldrawer extends StatelessWidget {
                 backgroundImage: NetworkImage(
                     'https://scontent.fdac24-1.fna.fbcdn.net/v/t39.30808-6/306923622_1594836147598130_8976480224634974980_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeF3PIQkAn72236oLvrhS2JFlDs0CzrKaMGUOzQLOspowWnHKlvUdEbSfDv4goj0LV7kS7-JFP_nlrnmlOrsXCGL&_nc_ohc=IDVsMziSo_sAX-kJNWp&_nc_ht=scontent.fdac24-1.fna&oh=00_AfAqUw-HePonnDk_dOoBVDPZ_vhoq5omjU92dG6rOBtJAQ&oe=63A69B83')),
             SizedBox(height: 10),
-            Text("RetroPortal Studio")
+            Text("RetroPortal Studio",style:TextStyle(fontSize: 18),)
           ],
         )),
       ),
