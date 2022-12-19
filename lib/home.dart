@@ -27,68 +27,63 @@ class _HomeState extends State<Home> {
       drawer: ResponsiveLayout(
         simpleDrawer: myDrawer,
         expendedDrawer: const ExpendedDrawer(),
-        multileveiDrawer: const MultiLevelDrawer(),
+        multileveiDrawer: const Multileveldrawer(),
         value: drawernumber,
       ),
-      body: Container(
-        width: 500,
-        alignment: Alignment.topCenter,
-        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*.4),
+      body: Center(
 
-        child: Column(
-        
+        child: Container(
+          width: 250,
+          alignment: Alignment.center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 30),
+              RadioListTile<SingingCharacter>(
+                title: const Text('Simple Drawer'),
+                value: SingingCharacter.simpleDrawer,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                tileColor:(_character==SingingCharacter.simpleDrawer)?Colors.black12:Colors.white10,
+                groupValue: _character,
+                onChanged: (SingingCharacter? value) {
+                  setState(() {
+                    _character = value;
+                    drawernumber = 1;
+                  });
+                },
+              ),
 
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+              RadioListTile<SingingCharacter>(
+                title: const Text('Expended Drawer'),
+                value: SingingCharacter.expendedDrawer,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                tileColor:(_character==SingingCharacter.expendedDrawer)?Colors.black12:Colors.white10,
+                groupValue: _character,
+                onChanged: (SingingCharacter? value) {
+                  setState(() {
+                    _character = value;
+                    drawernumber = 2;
+                  });
+                },
+              ),
 
-            RadioListTile<SingingCharacter>(
-              title: const Text('Simple Drawer'),
-              value: SingingCharacter.simpleDrawer,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              groupValue: _character,
-              onChanged: (SingingCharacter? value) {
-                setState(() {
-                  _character = value;
-                  drawernumber = 1;
-                  print(_character);
-                  print(drawernumber);
-                });
-              },
-            ),
+              RadioListTile<SingingCharacter>(
+                title: const Text('Multilevel Drawer'),
+                activeColor: Colors.green,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                tileColor:(_character==SingingCharacter.multilevelDrawer)?Colors.black12:Colors.white10,
+                value: SingingCharacter.multilevelDrawer,
+                groupValue: _character,
+                onChanged: (SingingCharacter? value) {
+                  setState(() {
+                    _character = value;
+                    drawernumber = 3;
+                  });
+                },
+              ),
 
-            RadioListTile<SingingCharacter>(
-              title: const Text('Expended Drawer'),
-              value: SingingCharacter.expendedDrawer,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              tileColor:(_character==SingingCharacter.expendedDrawer)?Colors.black12:Colors.white10,
-              groupValue: _character,
-              onChanged: (SingingCharacter? value) {
-                setState(() {
-                  _character = value;
-                  drawernumber = 2;
-                  print(_character);
-                  print(drawernumber);
-                });
-              },
-            ),
-
-            RadioListTile<SingingCharacter>(
-              title: const Text('Multilevel Drawer'),
-              activeColor: Colors.green,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              value: SingingCharacter.multilevelDrawer,
-              groupValue: _character,
-              onChanged: (SingingCharacter? value) {
-                setState(() {
-                  _character = value;
-                  drawernumber = 3;
-                  print(_character);
-                  print(drawernumber);
-                });
-              },
-            ),
-
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -96,7 +91,7 @@ class _HomeState extends State<Home> {
 }
 
 class ResponsiveLayout extends StatelessWidget {
-  final  simpleDrawer;
+  final  Widget simpleDrawer;
   final Widget expendedDrawer;
   final Widget multileveiDrawer;
   final int value;
@@ -114,10 +109,8 @@ class ResponsiveLayout extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (value == 1) {
-          print(value);
           return simpleDrawer;
         } else if (value == 2) {
-          print(value);
           return expendedDrawer;
         } else {
           return multileveiDrawer;
