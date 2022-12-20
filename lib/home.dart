@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'expendedDrawer.dart';
+import 'expansionDrawer.dart';
 import 'multiLevelDrawer.dart';
 import 'simpleDrawer.dart';
 
@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-enum SingingCharacter { simpleDrawer, expendedDrawer, multilevelDrawer }
+enum SingingCharacter { simpleDrawer, expansionDrawer, multilevelDrawer }
 
 class _HomeState extends State<Home> {
   SingingCharacter? _character = SingingCharacter.simpleDrawer;
@@ -26,12 +26,13 @@ class _HomeState extends State<Home> {
       ),
       drawer: ResponsiveLayout(
         simpleDrawer: myDrawer,
-        expendedDrawer: const ExpendedDrawer(),
+        expansionDrawer: const ExpansionDrawer(),
         multileveiDrawer: const Multileveldrawer(),
         value: drawernumber,
       ),
-      body: Center(
-
+      body: Container(width: double.infinity,
+        alignment: Alignment.topRight,
+        padding: const EdgeInsets.only(right: 20),
         child: Container(
           width: 250,
           alignment: Alignment.center,
@@ -53,53 +54,53 @@ class _HomeState extends State<Home> {
                 },
               ),
 
-              RadioListTile<SingingCharacter>(
-                title: const Text('Expended Drawer'),
-                value: SingingCharacter.expendedDrawer,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                tileColor:(_character==SingingCharacter.expendedDrawer)?Colors.black12:Colors.white10,
-                groupValue: _character,
-                onChanged: (SingingCharacter? value) {
-                  setState(() {
-                    _character = value;
-                    drawernumber = 2;
-                  });
-                },
-              ),
+            RadioListTile<SingingCharacter>(
+              title: const Text('Expansion Drawer'),
+              value: SingingCharacter.expansionDrawer,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              tileColor:(_character==SingingCharacter.expansionDrawer)?Colors.black12:Colors.white10,
+              groupValue: _character,
+              onChanged: (SingingCharacter? value) {
+                setState(() {
+                  _character = value;
+                  drawernumber = 2;
+                });
+              },
+            ),
 
-              RadioListTile<SingingCharacter>(
-                title: const Text('Multilevel Drawer'),
-                activeColor: Colors.green,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                tileColor:(_character==SingingCharacter.multilevelDrawer)?Colors.black12:Colors.white10,
-                value: SingingCharacter.multilevelDrawer,
-                groupValue: _character,
-                onChanged: (SingingCharacter? value) {
-                  setState(() {
-                    _character = value;
-                    drawernumber = 3;
-                  });
-                },
-              ),
+            RadioListTile<SingingCharacter>(
+              title: const Text('Multilevel Drawer'),
+              activeColor: Colors.green,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              tileColor:(_character==SingingCharacter.multilevelDrawer)?Colors.black12:Colors.white10,
+              value: SingingCharacter.multilevelDrawer,
+              groupValue: _character,
+              onChanged: (SingingCharacter? value) {
+                setState(() {
+                  _character = value;
+                  drawernumber = 3;
+                });
+              },
+            ),
 
-            ],
-          ),
+          ],
         ),
-      ),
+      )
+      )
     );
   }
 }
 
 class ResponsiveLayout extends StatelessWidget {
   final  Widget simpleDrawer;
-  final Widget expendedDrawer;
+  final Widget expansionDrawer;
   final Widget multileveiDrawer;
   final int value;
 
   const ResponsiveLayout({
     super.key,
     required this.simpleDrawer,
-    required this.expendedDrawer,
+    required this.expansionDrawer,
     required this.multileveiDrawer,
     required this.value,
   });
@@ -111,7 +112,7 @@ class ResponsiveLayout extends StatelessWidget {
         if (value == 1) {
           return simpleDrawer;
         } else if (value == 2) {
-          return expendedDrawer;
+          return expansionDrawer;
         } else {
           return multileveiDrawer;
         }

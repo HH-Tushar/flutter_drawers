@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ExpendedDrawer extends StatelessWidget {
-  const ExpendedDrawer({super.key});
+class ExpansionDrawer extends StatelessWidget {
+  const ExpansionDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -114,8 +114,13 @@ class ExpendedDrawer extends StatelessWidget {
             ),
 
             const SizedBox(height: 8),
-            const CustomButton(
-              buttonName: " D E V E L O P E R S",
+            const Divider(),
+            const SizedBox(
+              child:Align(alignment: Alignment.bottomCenter,
+                child: CustomButton(
+                  buttonName: "L O G O U T",
+                ),),
+
             ),
           ],
         ),

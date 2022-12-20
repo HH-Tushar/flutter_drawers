@@ -10,7 +10,7 @@ var myAppBar = AppBar(
 var drawerTextColor = TextStyle(
   color: Colors.grey[600],
 );
-var tilePadding = const EdgeInsets.only(left: 40.0, right: 8, top: 8);
+var tilePadding =  const EdgeInsets.only(left: 40.0, right: 40, top: 8,bottom: 8);
 
 Widget myDrawer = Drawer(
   backgroundColor: Colors.grey[300],
@@ -54,17 +54,25 @@ Widget myDrawer = Drawer(
           ),
         ),
       ),
-      Padding(
-        padding: tilePadding,
-        child: ListTile(
-          leading: const Icon(Icons.logout),
-          title: Text(
-            'L O G O U T',
-            style: drawerTextColor,
+      const Divider(indent: 25,endIndent: 25),
+      Expanded(
+        child: Align(
+          alignment: FractionalOffset.bottomCenter,
+          child: Padding(
+            padding: tilePadding,
+            child: ListTile(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              //tileColor:Colors.black12,
+              leading: const Icon(Icons.logout),
+              title: Text(
+                'L O G O U T',
+                style: drawerTextColor,
+              ),
+            ),
           ),
         ),
       ),
+      const SizedBox(height: 5),
     ],
   ),
 );
-
